@@ -1,3 +1,4 @@
+import 'package:audio/audio/audio.dart';
 import 'package:audio/audio/audio_app.dart';
 import 'package:audio/test/test1.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: AudioPlayerExample(),
+      home: MusicPlayerUI(),
     );
   }
 }

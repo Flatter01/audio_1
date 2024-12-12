@@ -191,7 +191,7 @@ class _AudioPlayerExampleState extends State<AudioPlayerExample> {
                                     onPressed: _playPreviousTrack,
                                     icon: const Icon(
                                       CupertinoIcons.chevron_back,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       size: 40,
                                     ),
                                   ),
@@ -204,7 +204,7 @@ class _AudioPlayerExampleState extends State<AudioPlayerExample> {
                                           isPlaying
                                               ? Icons.pause
                                               : Icons.play_arrow,
-                                          color: Colors.black,
+                                          color: Colors.white,
                                           size: 40,
                                         ),
                                       );
@@ -214,7 +214,7 @@ class _AudioPlayerExampleState extends State<AudioPlayerExample> {
                                     onPressed: _playNextTrack,
                                     icon: const Icon(
                                       CupertinoIcons.chevron_forward,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                       size: 40,
                                     ),
                                   ),
@@ -226,7 +226,7 @@ class _AudioPlayerExampleState extends State<AudioPlayerExample> {
                                     },
                                     icon: const Icon(
                                       Icons.close,
-                                      color: Colors.black,
+                                      color: Colors.white,
                                     ),
                                   ),
                                   Text(
@@ -234,7 +234,39 @@ class _AudioPlayerExampleState extends State<AudioPlayerExample> {
                                     style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        isVolumeVisible = !isVolumeVisible;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      isVolumeVisible
+                                          ? Icons.volume_up
+                                          : Icons.volume_off,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.17,
+                                    height: 30,
+                                    child: Slider(
+                                      value: volume,
+                                      min: 0.0,
+                                      max: 1.0,
+                                      onChanged: (value) async {
+                                        setState(() {
+                                          volume = value;
+                                        });
+                                        await _player.setVolume(volume);
+                                      },
+                                      activeColor: Colors.white,
+                                      inactiveColor: Colors.grey,
                                     ),
                                   ),
                                 ],
